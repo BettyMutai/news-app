@@ -1,0 +1,64 @@
+{% load bootstrap3 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% block styles %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/basenews.css' %}">
+  {% endblock %}
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="{% url 'newsToday' %}">Nation News</a>
+      </div>
+
+      <!-- Adding a search form  -->
+      <div class="col-sm-4 col-md-4 navbar-right">
+        <form class="navbar-form" role="search" action="{% url 'search_results' %}">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search Article" name="article">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+        <div class="col-sm-6 col-md-6">
+          {% if user.is_authenticated %}
+          <ul>
+            <li>
+              <a href="{% url 'newsToday' %}">Home</a>
+            </li>
+            <li>
+              <a href="{%url 'new-article'%}">Create Article</a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="/accounts/password/change">Change Password</a>
+                </li>
+                <li>
+                  <a href="/logout">Logout</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          {% else %}
+          <li>
+            <a class="btn btn-default" href="/accounts/login">Login</a>
+          </li>
+          {% endif %}
+        </div>
+      <!-- search form end -->
+    </div>
+  </nav>
+</body>
+</html>

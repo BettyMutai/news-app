@@ -1,0 +1,3 @@
+Hello {{name}}
+
+Welcome to the Nation News newsletter You will find the most exciting news about our nation
