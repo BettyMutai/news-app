@@ -7,15 +7,16 @@
     <title>Nation News</title>
     {% block styles %}
       {% bootstrap_css %}
+      <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
       <link rel="stylesheet" href="{% static 'css/basenews.css' %}" type="text/css">
     {% endblock %}
   </head>
   <body>
     {% include "navbar.html" %}
     {% block content%}
-      <h1 class="text-center">News for {{date|date:"l d-F Y"}}</h1>
+      <h1 id="main-heading" class="text-center">News for {{date|date:"l d-F Y"}}</h1>
     {% endblock %}
-
+    {% include "footer.html" %}
 
 
     {% block scripts %}

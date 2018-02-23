@@ -8,18 +8,26 @@
 
   <!-- Looping through news   -->
   {% for news_item in news %}
+  <figure class="snip1208">
+    <img src="{{news_item.article_image.url}}" class="img-responsive" alt="Image">
+    <!-- <div class="date"><span class="day">28</span><span class="month">Oct</span></div><i class="ion-film-marker"></i> -->
+    <figcaption>
+      <h3>{{ news_item.title }}</h3>
+      <p>
+        I don't need to compromise my principles, because they don't have the slightest bearing on what happens to me anyway.
+      </p>
+      <a href="{% url 'article' news_item.id %}"><button>Read More</button></a>
+    </figcaption><a href="#"></a>
+  </figure>
 
-  <div class="row">
-    <!-- displaying News articles -->
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-      <a href="{% url 'article' news_item.id %}"><h2 class="text-center">{{ news_item.title }}</h2></a>
+  <!-- <div class="row">
+
+    <div class="col-sm-4">
+      <img src="{{news_item.article_image.url}}" class="img-responsive" alt="Image">
+      <a href="{% url 'article' news_item.id %}"><h4 class="text-center">{{ news_item.title }}</h4></a>
     </div>
-    <!--Display news Article images  -->
-   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-     <img src="{{news_item.article_image.url}}" class="img-responsive" alt="Image">
-   </div>
 
-  </div>
+  </div> -->
 
   {% empty %}
   <div class="row">
@@ -27,7 +35,7 @@
   </div>
   {% endfor %}
 </div>
-<div class="container">
+<div class="container newz" style="  padding-bottom: 100px;">
   <form action="{% url 'newsToday' %}" method="post">
     {% csrf_token %} {% bootstrap_form letterForm layout='inline' %}
     <input type="submit" value="Subscribe">

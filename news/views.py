@@ -15,7 +15,8 @@ from .permissions import IsAdminOrReadOnly
 # Create your views here.
 def news_today(request):
     date = dt.date.today()
-    news = Article.todays_news()
+    # news = Article.todays_news()
+    news = Article.objects.all()
     form = NewsLetterForm()
     return render(request, 'all-news/today-news.html', {'date': date, 'news': news,'letterForm':form})
 

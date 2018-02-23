@@ -1,6 +1,5 @@
 {% load bootstrap3 %}
 {% load static %}
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,14 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% block styles %}
     {% bootstrap_css %}
-    <link rel="stylesheet" href="{% static 'css/basenews.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}" type="text/css">
   {% endblock %}
 </head>
 <body>
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="{% url 'newsToday' %}">Nation News</a>
+        <a class="navbar-brand" href="#" style="font-family: 'Concert One', cursive;">Nation News</a>
       </div>
 
       <!-- Adding a search form  -->
@@ -39,22 +39,20 @@
             <li>
               <a href="{%url 'new-article'%}">Create Article</a>
             </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account<span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li>
-                  <a href="/accounts/password/change">Change Password</a>
-                </li>
-                <li>
-                  <a href="/logout">Logout</a>
-                </li>
-              </ul>
+            <li>
+              <a href="/accounts/password/change">Change Password</a>
+            </li>
+            <li>
+              <a href="/logout">Logout</a>
             </li>
           </ul>
           {% else %}
+        <ul>
           <li>
-            <a class="btn btn-default" href="/accounts/login">Login</a>
+            <a href="/accounts/login">Login</a>
           </li>
+
+        </ul>
           {% endif %}
         </div>
       <!-- search form end -->
